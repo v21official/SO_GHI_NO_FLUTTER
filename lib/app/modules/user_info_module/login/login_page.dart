@@ -54,33 +54,11 @@ class LoginPage extends GetWidget<LoginController> {
                 obscureText: true,
               ),
               SizedBox.fromSize(size: Size(0, 11)),
-              SizedBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: GlobalVariables.LOGIN_LINK_FORGOT_PASSWORD,
-                          style: GoogleFonts.quicksand(
-                            textStyle: colorWhite_sizeDefault,
-                          ),
-                          recognizer: new TapGestureRecognizer()
-                            ..onTap = () {
-                              Get.toNamed(Routes.FORGOT_PASSWORD);
-                            },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              )), //Line remember me
               SizedBox.fromSize(size: Size(0, 23)),
               MyButton(
                 Color(0xffF5372A),
                 function: () {
-                  Get.offAndToNamed(Routes.EMPTY_DASHBOARD);
+                  Get.offAndToNamed(Routes.HOME);
                 },
                 child: MyText(
                   GlobalVariables.TEXT_LOGIN,

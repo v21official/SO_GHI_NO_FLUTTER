@@ -34,15 +34,15 @@ const Icon iconCommentBlue = Icon(
 );
 
 // nav bar
-const Icon iconNotificationNavBar = Icon(
-  FontAwesome.bell,
+const Icon iconHomeNavBar = Icon(
+  FontAwesome.home,
   color: Color(0xffA2BAC4),
-  size: 30,
+  size: 24,
 );
-const Icon iconCommentNavBar = Icon(
-  FontAwesome.comment,
+const Icon iconUserNavBar = Icon(
+  FontAwesome.user_circle_o,
   color: Color(0xffA2BAC4),
-  size: 30,
+  size: 24,
 );
 const Icon iconPlus = Icon(FontAwesome.plus);
 

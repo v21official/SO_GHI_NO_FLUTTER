@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
-import 'package:monitorflutter/app/modules/dashboard_module/empty_dashboard/empty_dashboard_page.dart';
+import 'package:monitorflutter/app/modules/history_module/home_page.dart';
 import 'package:monitorflutter/app/modules/service_module/add_service/add_service.dart';
-import 'package:monitorflutter/app/modules/service_module/list_service_detail/list_service_detail.dart';
-import 'package:monitorflutter/app/modules/user_info_module/forgot_password/forgot_password_page.dart';
 import 'package:monitorflutter/app/modules/user_info_module/login/login_page.dart';
 import 'package:monitorflutter/app/modules/user_info_module/register/register_page.dart';
 
@@ -16,14 +14,9 @@ abstract class AppPages {
       //binding: testBinding(),
     ),
     GetPage(
-      name: Routes.EMPTY_DASHBOARD,
-      page: () => EmptyDashboardPage(),
+      name: Routes.HOME,
+      page: () => HomePage(),
       //binding: LogNotificationBindings(),
-    ),
-    GetPage(
-      name: Routes.FORGOT_PASSWORD,
-      page: () => ForgotPasswordPage(),
-      //binding: testBinding(),
     ),
     GetPage(
       name: Routes.REGISTER,
@@ -33,11 +26,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.ADD_SERVICE,
       page: () => AddServiceScreen(),
-    ),
-    GetPage(
-      name: Routes.LIST_SERVICE_DETAIL,
-      page: () => ListServiceDetailStateScreen(),
-      //binding: LogNotificationBindings(),
     ),
   ];
 }
