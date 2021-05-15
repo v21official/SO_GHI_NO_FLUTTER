@@ -4,11 +4,11 @@ class GlobalVariables {
   static const String MAIN_BACKGROUND = "assets/images/Intersection.png";
   static const String TOP_BACKGROUND = "assets/images/top-bg.png";
   static const double FONT_SIZE_DEFAULT = 12;
-  static const String INPUT_HINT_EMAIL = "Email đăng nhập";
+  static const String INPUT_HINT_USERNAME = "Tên đăng nhập";
   static const String INPUT_HINT_PASSWORD = "Mật khẩu";
   static const String INPUT_HINT_CONFIRM_PASSWORD = "Nhập lại mật khẩu";
   static const String INPUT_HINT_TELEPHONE = "Điện thoại";
-  static const String TEXT_LOGIN = "Đăng nhập";
+  static const String TEXT_LOGIN = "ĐĂNG NHẬP";
   static const String TEXT_DASHBOARD = "Dashboard";
   static const String TEXT_NOTIFICATION = "Thông báo";
   static const String TEXT_CANCEL = "Hủy";
@@ -60,9 +60,9 @@ class GlobalVariables {
       "Hướng dẫn sử dụng tài khoản";
 
   //Register screen
-  static const String REGISTER_INPUT_FULLNAME = "Tên đầy đủ";
+  static const String REGISTER_INPUT_FULLNAME = "Họ và tên";
   static const String REGISTER_INPUT_HINT_FULLNAME = "Tên đầy đủ";
-  static const String REGISTER_BUTTON_TEXT = "Đăng ký";
+  static const String REGISTER_BUTTON_TEXT = "ĐĂNG KÝ";
   static const String REGISTER_LABEL_EXISTED_REGISTER = "Bạn đã có tài khoản?";
   static const String REGISTER_LABEL_README_1 =
       "Khi click nút đăng ký, nghĩa là bạn đã đồng ý với";

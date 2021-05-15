@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 // module user info
-const Icon iconEmailBlue = Icon(
-  Icons.mail_outline,
+const Icon iconUsernameBlue = Icon(
+  FontAwesome.key,
   color: Colors.blue,
 );
 const Icon iconLockBlue = Icon(

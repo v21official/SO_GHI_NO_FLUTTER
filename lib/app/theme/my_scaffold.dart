@@ -60,9 +60,7 @@ class MyScaffold extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               IconButton(
-                onPressed: () {
-                  print('home');
-                },
+                onPressed: () {},
                 icon: Icon(
                   FontAwesome.home,
                   color: Colors.white,
@@ -71,7 +69,7 @@ class MyScaffold extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  print('user');
+                  Get.offAndToNamed(Routes.CREATE);
                 },
                 icon: Icon(
                   FontAwesome.plus,
@@ -81,7 +79,7 @@ class MyScaffold extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  print('user');
+                  Get.offAndToNamed(Routes.USER);
                 },
                 icon: Icon(
                   FontAwesome.user_circle_o,

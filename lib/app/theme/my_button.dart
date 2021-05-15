@@ -15,7 +15,7 @@ class MyButton extends StatelessWidget {
     required this.function,
     this.width = double.infinity,
     this.height = 48,
-    this.radius,
+    this.radius = 6,
     this.child,
   }) : super(key: key);
 
@@ -27,6 +27,11 @@ class MyButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(color),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(radius!),
+            ),
+          ),
         ),
         onPressed: function,
         child: child,

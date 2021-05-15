@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
+import 'package:monitorflutter/app/routes/app_pages.dart';
 import 'package:monitorflutter/app/theme/my_color.dart';
+import 'package:monitorflutter/app/theme/my_text.dart';
 
 class ScaffoldUser extends StatelessWidget {
   final Function() bodyFunction;
@@ -16,7 +19,10 @@ class ScaffoldUser extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: AppBar(
           backgroundColor: appBarColor,
-          title: Text('Thông tin cá nhân'),
+          title: MyText(
+            'Thông tin cá nhân',
+            fontSize: 18,
+          ),
         ),
       ),
       resizeToAvoidBottomInset: false,
@@ -31,10 +37,11 @@ class ScaffoldUser extends StatelessWidget {
         },
         child: SafeArea(
           child: Container(
-              color: darkThemeBackgroundColor,
-              child: TabBarView(
-                children: bodyFunction(), // Main body dynamic
-              )),
+            height: double.infinity,
+            width: double.infinity,
+            color: darkThemeBackgroundColor,
+            child: bodyFunction(), // Main body dynamic
+          ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -43,7 +50,7 @@ class ScaffoldUser extends StatelessWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {
-                print('home');
+                Get.offAndToNamed(Routes.HOME);
               },
               icon: Icon(
                 FontAwesome.home,
@@ -53,7 +60,7 @@ class ScaffoldUser extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                print('add');
+                Get.offAndToNamed(Routes.CREATE);
               },
               icon: Icon(
                 FontAwesome.plus,
@@ -62,9 +69,7 @@ class ScaffoldUser extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {
-                print('user');
-              },
+              onPressed: () {},
               icon: Icon(
                 FontAwesome.user_circle_o,
                 color: Colors.white,

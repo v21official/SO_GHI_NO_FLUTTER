@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:get/get.dart';
+import 'package:monitorflutter/app/routes/app_pages.dart';
 import 'package:monitorflutter/app/theme/my_color.dart';
+import 'package:monitorflutter/app/theme/my_text.dart';
 
-class ScaffoldCreateHistory extends StatelessWidget {
+class ScaffoldCreate extends StatelessWidget {
   final Function() bodyFunction;
 
-  ScaffoldCreateHistory({
+  ScaffoldCreate({
     required this.bodyFunction,
   });
 
@@ -16,7 +19,10 @@ class ScaffoldCreateHistory extends StatelessWidget {
         preferredSize: Size.fromHeight(50),
         child: AppBar(
           backgroundColor: appBarColor,
-          title: Text('Thêm giao dịch'),
+          title: MyText(
+            'Thêm giao dịch',
+            fontSize: 18,
+          ),
         ),
       ),
       resizeToAvoidBottomInset: false,
@@ -31,10 +37,9 @@ class ScaffoldCreateHistory extends StatelessWidget {
         },
         child: SafeArea(
           child: Container(
-              color: darkThemeBackgroundColor,
-              child: TabBarView(
-                children: bodyFunction(), // Main body dynamic
-              )),
+            color: darkThemeBackgroundColor,
+            child: bodyFunction(),
+          ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -43,7 +48,7 @@ class ScaffoldCreateHistory extends StatelessWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {
-                print('home');
+                Get.offAndToNamed(Routes.HOME);
               },
               icon: Icon(
                 FontAwesome.home,
@@ -52,9 +57,7 @@ class ScaffoldCreateHistory extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {
-                print('add');
-              },
+              onPressed: () {},
               icon: Icon(
                 FontAwesome.plus,
                 color: Colors.white,
@@ -63,7 +66,7 @@ class ScaffoldCreateHistory extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                print('user');
+                Get.offAndToNamed(Routes.USER);
               },
               icon: Icon(
                 FontAwesome.user_circle_o,

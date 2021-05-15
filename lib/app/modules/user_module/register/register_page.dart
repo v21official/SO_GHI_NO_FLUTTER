@@ -2,42 +2,36 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/colors/gf_color.dart';
-import 'package:getwidget/components/checkbox/gf_checkbox.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:monitorflutter/app/modules/user_info_module/login/login_controller.dart';
+import 'package:monitorflutter/app/modules/user_module/register/register_controller.dart';
 import 'package:monitorflutter/app/routes/app_pages.dart';
+import 'package:monitorflutter/app/theme/scaffold_login.dart';
 import 'package:monitorflutter/app/theme/my_button.dart';
 import 'package:monitorflutter/app/theme/my_color.dart';
-import 'package:monitorflutter/app/theme/my_scaffold_login.dart';
+import 'package:monitorflutter/app/theme/my_icon.dart';
 import 'package:monitorflutter/app/theme/my_text.dart';
 import 'package:monitorflutter/app/theme/my_text_form_field.dart';
 import 'package:monitorflutter/app/utils/global_variables.dart';
-import 'package:monitorflutter/app/theme/my_style.dart';
-import 'package:monitorflutter/app/theme/my_icon.dart';
 
-// ignore: must_be_immutable
-class LoginPage extends GetWidget<LoginController> {
-  bool _checkbox = false;
-
+class RegisterPage extends GetWidget<RegisterController> {
   @override
   Widget build(BuildContext context) {
-    print('Login loaded');
     return MyScaffoldLogin(bodyFunction: bodyFunction);
   }
 
   bodyFunction() {
-    return Container(
+    return SingleChildScrollView(
+        child: Container(
+      height: 720,
       child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox.fromSize(size: Size(0, 80)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_EMAIL,
-                icon: iconEmailBlue,
+                GlobalVariables.INPUT_HINT_USERNAME,
+                radius: 100,
+                icon: iconUsernameBlue,
                 backgroundInput: Colors.white,
                 borderColor: Colors.white,
                 focusBorderColor: Colors.white,
@@ -46,6 +40,7 @@ class LoginPage extends GetWidget<LoginController> {
               SizedBox.fromSize(size: Size(0, 11)),
               MyTextFormField(
                 GlobalVariables.INPUT_HINT_PASSWORD,
+                radius: 100,
                 icon: iconLockBlue,
                 backgroundInput: Colors.white,
                 borderColor: Colors.white,
@@ -54,48 +49,59 @@ class LoginPage extends GetWidget<LoginController> {
                 obscureText: true,
               ),
               SizedBox.fromSize(size: Size(0, 11)),
-              SizedBox.fromSize(size: Size(0, 23)),
+              MyTextFormField(
+                GlobalVariables.INPUT_HINT_CONFIRM_PASSWORD,
+                radius: 100,
+                icon: iconLockBlue,
+                backgroundInput: Colors.white,
+                borderColor: Colors.white,
+                focusBorderColor: Colors.white,
+                textInputColor: textInputModuleLoginColor,
+                obscureText: true,
+              ),
+              SizedBox.fromSize(size: Size(0, 40)),
               MyButton(
                 Color(0xffF5372A),
+                radius: 100,
                 function: () {
-                  Get.offAndToNamed(Routes.HOME);
+                  print('clicked register');
                 },
                 child: MyText(
-                  GlobalVariables.TEXT_LOGIN,
+                  GlobalVariables.REGISTER_BUTTON_TEXT,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox.fromSize(size: Size(0, 50)),
+              SizedBox.fromSize(
+                size: Size(0, 10),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyText(GlobalVariables.LOGIN_LABEL_NOT_REGISTER,
-                      fontSize: 13),
-                  SizedBox.fromSize(size: Size(10, 0)),
+                  MyText(GlobalVariables.REGISTER_LABEL_EXISTED_REGISTER),
+                  SizedBox.fromSize(
+                    size: Size(5, 0),
+                  ),
                   RichText(
+                    textAlign: TextAlign.center,
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: GlobalVariables.LOGIN_LINK_REGISTER,
-                          style: GoogleFonts.quicksand(
-                            textStyle: TextStyle(
-                              color: Colors.yellow,
-                              fontSize: 13,
-                            ),
-                          ),
+                          text: 'Đăng nhập',
+                          style:
+                              new TextStyle(color: Colors.yellow, fontSize: 13),
                           recognizer: new TapGestureRecognizer()
                             ..onTap = () {
-                              Get.toNamed(Routes.REGISTER);
+                              Get.offAndToNamed(Routes.LOGIN);
                             },
                         ),
                       ],
                     ),
-                  ),
+                  ), //Line how to register
                 ],
-              ), //Line not register
+              ),
             ],
           )),
-    );
+    ));
   }
 }
