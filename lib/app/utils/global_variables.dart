@@ -1,4 +1,4 @@
-class GlobalVariables {
+class CONSTANT {
   //Globals
   static const String LOGO_INET = "assets/images/Logo.png";
   static const String MAIN_BACKGROUND = "assets/images/Intersection.png";
@@ -64,12 +64,6 @@ class GlobalVariables {
   static const String REGISTER_INPUT_HINT_FULLNAME = "Tên đầy đủ";
   static const String REGISTER_BUTTON_TEXT = "ĐĂNG KÝ";
   static const String REGISTER_LABEL_EXISTED_REGISTER = "Bạn đã có tài khoản?";
-  static const String REGISTER_LABEL_README_1 =
-      "Khi click nút đăng ký, nghĩa là bạn đã đồng ý với";
-  static const String REGISTER_LABEL_README_2 = "Chính sách bảo mật";
-  static const String REGISTER_LABEL_README_AND = " và ";
-  static const String REGISTER_LABEL_README_3 = "thỏa thuận sử dụng ";
-  static const String REGISTER_LABEL_README_4 = "của chúng tôi";
 
   //Forgot password screen
   static const String HINT_FORGOT_PASSWORD = "Email khôi phục";

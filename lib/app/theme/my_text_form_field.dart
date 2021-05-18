@@ -17,10 +17,12 @@ class MyTextFormField extends StatelessWidget {
     this.focusBorderColor = darkThemeFocusBorderInputColor,
     this.textInputColor = darkThemeTextInputColor,
     this.keyboardType = TextInputType.text,
-    this.radius = 6.0,
+    this.radius = 6,
+    this.height = 60,
     this.maxLines = 1,
     this.hintStyle = hintStyleInputLogin,
     this.icon,
+    this.onTap,
     this.obscureText = false,
   }) : super(key: key);
 
@@ -38,12 +40,15 @@ class MyTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int? maxLines;
   final double radius;
+  final double? height;
   final Icon? icon;
+  final Function? onTap;
   final bool obscureText; // password: string => ***
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(radius),
         child: Container(
@@ -51,6 +56,7 @@ class MyTextFormField extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 3),
             child: TextFormField(
+              onTap: () => onTap,
               focusNode: focusNode,
               obscureText: obscureText,
               maxLines: maxLines,

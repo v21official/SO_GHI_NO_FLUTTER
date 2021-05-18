@@ -12,7 +12,7 @@ class AddServiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyScaffold(
       bodyFunction: bodyFunction,
-      title: GlobalVariables.ADD_SERVICE_TITLE,
+      title: CONSTANT.ADD_SERVICE_TITLE,
     );
   }
 
@@ -51,7 +51,7 @@ class AddServiceScreen extends StatelessWidget {
                   print('service added');
                 },
                 child: MyText(
-                  GlobalVariables.TEXT_CREATE,
+                  CONSTANT.TEXT_CREATE,
                   fontSize: 16,
                 ),
               ),

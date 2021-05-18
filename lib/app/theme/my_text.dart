@@ -8,7 +8,7 @@ class MyText extends StatelessWidget {
     this.text, {
     Key? key,
     this.color = Colors.white,
-    this.fontSize = GlobalVariables.FONT_SIZE_DEFAULT,
+    this.fontSize = CONSTANT.FONT_SIZE_DEFAULT,
     this.fontWeight = FontWeight.normal,
   }) : super(key: key);
 

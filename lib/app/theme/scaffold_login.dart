@@ -5,7 +5,7 @@ import 'my_text.dart';
 class MyScaffoldLogin extends StatelessWidget {
   final Function() bodyFunction;
   final Widget bgTopRight = Image(
-    image: AssetImage(GlobalVariables.TOP_BACKGROUND),
+    image: AssetImage(CONSTANT.TOP_BACKGROUND),
   );
 
   MyScaffoldLogin({required this.bodyFunction});
@@ -63,7 +63,7 @@ class MyScaffoldLogin extends StatelessWidget {
           height: 30,
         ),
         MyText(
-          GlobalVariables.LOGIN_TITLE_SCRREN,
+          CONSTANT.LOGIN_TITLE_SCRREN,
           color: Color(0xff658998),
           fontSize: 20,
         ),
@@ -79,7 +79,7 @@ class MyScaffoldLogin extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Image(
-        image: AssetImage(GlobalVariables.MAIN_BACKGROUND),
+        image: AssetImage(CONSTANT.MAIN_BACKGROUND),
         fit: BoxFit.fill,
       ),
     );

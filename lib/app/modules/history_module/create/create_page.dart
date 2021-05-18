@@ -49,7 +49,7 @@ class CreatePage extends StatelessWidget {
                   print('added');
                 },
                 child: MyText(
-                  GlobalVariables.TEXT_CREATE,
+                  CONSTANT.TEXT_CREATE,
                   fontSize: 16,
                 ),
               ),

@@ -29,7 +29,7 @@ class LoginPage extends GetWidget<LoginController> {
             children: [
               SizedBox.fromSize(size: Size(0, 80)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_USERNAME,
+                CONSTANT.INPUT_HINT_USERNAME,
                 radius: 100,
                 icon: iconUsernameBlue,
                 backgroundInput: Colors.white,
@@ -39,7 +39,7 @@ class LoginPage extends GetWidget<LoginController> {
               ),
               SizedBox.fromSize(size: Size(0, 11)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_PASSWORD,
+                CONSTANT.INPUT_HINT_PASSWORD,
                 radius: 100,
                 icon: iconLockBlue,
                 backgroundInput: Colors.white,
@@ -57,7 +57,7 @@ class LoginPage extends GetWidget<LoginController> {
                   Get.offAndToNamed(Routes.HOME);
                 },
                 child: MyText(
-                  GlobalVariables.TEXT_LOGIN,
+                  CONSTANT.TEXT_LOGIN,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -66,14 +66,13 @@ class LoginPage extends GetWidget<LoginController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyText(GlobalVariables.LOGIN_LABEL_NOT_REGISTER,
-                      fontSize: 13),
+                  MyText(CONSTANT.LOGIN_LABEL_NOT_REGISTER, fontSize: 13),
                   SizedBox.fromSize(size: Size(10, 0)),
                   RichText(
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: GlobalVariables.LOGIN_LINK_REGISTER,
+                          text: CONSTANT.LOGIN_LINK_REGISTER,
                           style: GoogleFonts.quicksand(
                             textStyle: TextStyle(
                               color: Colors.yellow,

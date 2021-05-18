@@ -29,7 +29,7 @@ class RegisterPage extends GetWidget<RegisterController> {
             children: [
               SizedBox.fromSize(size: Size(0, 80)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_USERNAME,
+                CONSTANT.INPUT_HINT_USERNAME,
                 radius: 100,
                 icon: iconUsernameBlue,
                 backgroundInput: Colors.white,
@@ -39,7 +39,7 @@ class RegisterPage extends GetWidget<RegisterController> {
               ),
               SizedBox.fromSize(size: Size(0, 11)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_PASSWORD,
+                CONSTANT.INPUT_HINT_PASSWORD,
                 radius: 100,
                 icon: iconLockBlue,
                 backgroundInput: Colors.white,
@@ -50,7 +50,7 @@ class RegisterPage extends GetWidget<RegisterController> {
               ),
               SizedBox.fromSize(size: Size(0, 11)),
               MyTextFormField(
-                GlobalVariables.INPUT_HINT_CONFIRM_PASSWORD,
+                CONSTANT.INPUT_HINT_CONFIRM_PASSWORD,
                 radius: 100,
                 icon: iconLockBlue,
                 backgroundInput: Colors.white,
@@ -67,7 +67,7 @@ class RegisterPage extends GetWidget<RegisterController> {
                   print('clicked register');
                 },
                 child: MyText(
-                  GlobalVariables.REGISTER_BUTTON_TEXT,
+                  CONSTANT.REGISTER_BUTTON_TEXT,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -78,7 +78,7 @@ class RegisterPage extends GetWidget<RegisterController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyText(GlobalVariables.REGISTER_LABEL_EXISTED_REGISTER),
+                  MyText(CONSTANT.REGISTER_LABEL_EXISTED_REGISTER),
                   SizedBox.fromSize(
                     size: Size(5, 0),
                   ),

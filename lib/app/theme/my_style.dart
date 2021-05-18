@@ -11,7 +11,7 @@ const TextStyle labelStyleInputDarkTheme = TextStyle(
 );
 const TextStyle darkThemeHelperStyleInput = TextStyle(
   color: darkThemeHintStyleInputColor,
-  fontSize: GlobalVariables.FONT_SIZE_DEFAULT,
+  fontSize: CONSTANT.FONT_SIZE_DEFAULT,
 );
 
 // login screen
@@ -20,12 +20,12 @@ const TextStyle loginTitle = TextStyle(
   fontSize: 14,
 );
 const TextStyle hintStyleInputLogin = TextStyle(
-  fontSize: GlobalVariables.FONT_SIZE_DEFAULT,
+  fontSize: CONSTANT.FONT_SIZE_DEFAULT,
   color: Color.fromRGBO(146, 146, 146, 1),
 );
 const TextStyle colorWhite_sizeDefault = TextStyle(
   color: Colors.white,
-  fontSize: GlobalVariables.FONT_SIZE_DEFAULT,
+  fontSize: CONSTANT.FONT_SIZE_DEFAULT,
 );
 
 // nav bar
