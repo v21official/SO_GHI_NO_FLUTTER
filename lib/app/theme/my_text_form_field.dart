@@ -23,6 +23,7 @@ class MyTextFormField extends StatelessWidget {
     this.hintStyle = hintStyleInputLogin,
     this.icon,
     this.onTap,
+    this.controller,
     this.obscureText = false,
   }) : super(key: key);
 
@@ -43,6 +44,7 @@ class MyTextFormField extends StatelessWidget {
   final double? height;
   final Icon? icon;
   final Function? onTap;
+  final TextEditingController? controller;
   final bool obscureText; // password: string => ***
 
   @override
@@ -57,6 +59,7 @@ class MyTextFormField extends StatelessWidget {
             padding: const EdgeInsets.only(top: 3),
             child: TextFormField(
               onTap: () => onTap,
+              controller: controller,
               focusNode: focusNode,
               obscureText: obscureText,
               maxLines: maxLines,

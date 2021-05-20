@@ -1,6 +1,6 @@
 class CONSTANT {
   //Globals
-  static const String LOGO_INET = "assets/images/Logo.png";
+  static const String LOGO_INET = "assets/images/logo1.png";
   static const String MAIN_BACKGROUND = "assets/images/Intersection.png";
   static const String TOP_BACKGROUND = "assets/images/top-bg.png";
   static const double FONT_SIZE_DEFAULT = 12;

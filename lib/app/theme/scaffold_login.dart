@@ -58,17 +58,14 @@ class MyScaffoldLogin extends StatelessWidget {
                 ))
           ],
         ),
-        // Center(child: Image.asset(GlobalVariables.LOGO_INET)),
-        SizedBox(
-          height: 30,
-        ),
+        Center(child: Image.asset(CONSTANT.LOGO_INET)),
         MyText(
           CONSTANT.LOGIN_TITLE_SCRREN,
           color: Color(0xff658998),
           fontSize: 20,
         ),
         SizedBox(
-          height: 50,
+          height: 30,
         ),
       ],
     );
