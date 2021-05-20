@@ -39,7 +39,8 @@ dependencies:
   getwidget: "^2.0.1-nullsafety.4"
   flutter_vector_icons: ^1.0.0
   google_fonts: ^2.0.0
-  toast: ^0.1.5
+  fluttertoast: ^8.0.7
+  shared_preferences: ^2.0.5
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,7 @@ import 'package:monitorflutter/app/theme/my_text.dart';
 import 'package:monitorflutter/app/theme/my_text_form_field.dart';
 import 'package:monitorflutter/app/theme/scaffold_create.dart';
 import 'package:monitorflutter/app/utils/global_variables.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CreatePage extends StatefulWidget {
   @override
@@ -106,12 +107,12 @@ class _CreatePage extends State<CreatePage> {
               SizedBox.fromSize(size: Size(0, 30)),
               MyButton(
                 buttonSubmitColor,
-                function: () {
+                function: () async {
                   print('====================================');
-                  print(selected['name']);
-                  print(partnerController.text);
-                  print(moneyController.text);
-                  print(noteController.text);
+                  // print(selected['name']);
+                  // print(partnerController.text);
+                  // print(moneyController.text);
+                  // print(noteController.text);
                 },
                 child: MyText(
                   CONSTANT.TEXT_CREATE,

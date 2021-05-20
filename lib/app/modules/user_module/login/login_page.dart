@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:toast/toast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -20,13 +21,34 @@ class LoginPage extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
     print('Login loaded');
-    return MyScaffoldLogin(bodyFunction: bodyFunction(context));
+    return MyScaffoldLogin(bodyFunction: bodyFunction);
   }
 
   TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
-  bodyFunction(BuildContext context) {
+  void login() async {
+    try {
+      // var url = 'http://10.60.1.17:9496/auth/login';
+      // var response = await Dio().post(url, data: {
+      //   'username': usernameController.text,
+      //   'password': passwordController.text
+      // });
+      // var parsedJson = json.decode(response.toString());
+      // var sid = parsedJson["access_token"];
+      // SharedPreferences pref = await SharedPreferences.getInstance();
+      // await pref.setString('sid', sid);
+      Get.offAndToNamed(Routes.HOME);
+    } catch (e) {
+      // usernameController.text = '';
+      // passwordController.text = '';
+      Fluttertoast.showToast(
+        msg: "Sai tài khoản hoặc mật khẩu!",
+      );
+    }
+  }
+
+  bodyFunction() {
     return Container(
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 40),
@@ -62,29 +84,7 @@ class LoginPage extends GetWidget<LoginController> {
                 Color(0xffF5372A),
                 radius: 100,
                 function: () {
-                  // Get.offAndToNamed(Routes.HOME);
-                  print(usernameController.text);
-                  print(passwordController.text);
-                  void getHttp() async {
-                    try {
-                      var url = 'http://10.60.1.17:9496/auth/login';
-                      var response = await Dio().post(url, data: {
-                        'username': usernameController.text,
-                        'password': passwordController.text
-                      });
-                      var parsedJson = json.decode(response.toString());
-                      var sid = parsedJson["access_token"];
-                      print(sid);
-                    } catch (e) {
-                      // usernameController.text = '';
-                      // passwordController.text = '';
-                      Toast.show("Toast plugin app", context,
-                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      print(e);
-                    }
-                  }
-
-                  getHttp();
+                  login();
                 },
                 child: MyText(
                   CONSTANT.TEXT_LOGIN,
