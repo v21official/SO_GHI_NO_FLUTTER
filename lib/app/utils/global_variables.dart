@@ -1,5 +1,6 @@
 class CONSTANT {
   //Globals
+  static const String URL_API = "http://10.60.1.17:9496";
   static const String LOGO_INET = "assets/images/logo1.png";
   static const String MAIN_BACKGROUND = "assets/images/Intersection.png";
   static const String TOP_BACKGROUND = "assets/images/top-bg.png";
