@@ -19,19 +19,15 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: GoogleFonts.quicksand(
-          textStyle: TextStyle(
-            color: color,
-            fontSize: fontSize,
-            fontWeight: FontWeight.w600,
-          ),
-        )
-        // style: TextStyle(
-        //   color: color,
-        //   fontSize: fontSize,
-        //   fontWeight: fontWeight,
-        // ),
-        );
+    return Text(
+      text,
+      style: GoogleFonts.quicksand(
+        textStyle: TextStyle(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
   }
 }

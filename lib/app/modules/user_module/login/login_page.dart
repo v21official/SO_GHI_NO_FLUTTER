@@ -20,7 +20,6 @@ import 'package:monitorflutter/app/theme/my_icon.dart';
 class LoginPage extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
-    print('Login loaded');
     return MyScaffoldLogin(bodyFunction: bodyFunction);
   }
 
@@ -29,16 +28,22 @@ class LoginPage extends GetWidget<LoginController> {
 
   void login() async {
     try {
-      // var url = 'http://10.60.1.17:9496/auth/login';
-      // var response = await Dio().post(url, data: {
-      //   'username': usernameController.text,
-      //   'password': passwordController.text
-      // });
-      // var parsedJson = json.decode(response.toString());
-      // var sid = parsedJson["access_token"];
-      // SharedPreferences pref = await SharedPreferences.getInstance();
-      // await pref.setString('sid', sid);
-      Get.offAndToNamed(Routes.HOME);
+      if (usernameController.text == '' || passwordController.text == '') {
+        Fluttertoast.showToast(
+          msg: "Vui lòng điền đủ thông tin!",
+        );
+      } else {
+        var url = '${CONSTANT.URL_API}/auth/login';
+        var response = await Dio().post(url, data: {
+          'username': usernameController.text,
+          'password': passwordController.text
+        });
+        var parsedJson = json.decode(response.toString());
+        var sid = parsedJson["access_token"];
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        await pref.setString('sid', sid);
+        Get.offAndToNamed(Routes.HOME);
+      }
     } catch (e) {
       // usernameController.text = '';
       // passwordController.text = '';
@@ -78,8 +83,7 @@ class LoginPage extends GetWidget<LoginController> {
                 textInputColor: textInputModuleLoginColor,
                 obscureText: true,
               ),
-              SizedBox.fromSize(size: Size(0, 11)),
-              SizedBox.fromSize(size: Size(0, 23)),
+              SizedBox.fromSize(size: Size(0, 30)),
               MyButton(
                 Color(0xffF5372A),
                 radius: 100,

@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:monitorflutter/app/theme/my_button.dart';
 import 'package:monitorflutter/app/theme/my_color.dart';
 import 'package:monitorflutter/app/theme/my_text.dart';
@@ -23,6 +27,43 @@ class _CreatePage extends State<CreatePage> {
   TextEditingController partnerController = new TextEditingController();
   TextEditingController moneyController = new TextEditingController();
   TextEditingController noteController = new TextEditingController();
+
+  void create() async {
+    try {
+      if (selected == null ||
+          partnerController.text == '' ||
+          moneyController.text == '' ||
+          noteController.text == '') {
+        Fluttertoast.showToast(
+          msg: "Vui lòng điền đủ thông tin!",
+        );
+      } else {
+        var url = '${CONSTANT.URL_API}/history';
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        var sid = await pref.getString('sid');
+        Dio dio = new Dio();
+        dio.options.headers['content-Type'] = 'application/json';
+        dio.options.headers["authorization"] = "Bearer $sid";
+        await dio.post(url, data: {
+          'type': selected['name'],
+          'partner': partnerController.text,
+          'money': int.parse(moneyController.text),
+          'note': noteController.text
+        });
+        partnerController.text = '';
+        moneyController.text = '';
+        noteController.text = '';
+        Fluttertoast.showToast(
+          msg: "Thành công!",
+        );
+      }
+    } catch (e) {
+      print(e);
+      Fluttertoast.showToast(
+        msg: "Có lỗi",
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,12 +148,8 @@ class _CreatePage extends State<CreatePage> {
               SizedBox.fromSize(size: Size(0, 30)),
               MyButton(
                 buttonSubmitColor,
-                function: () async {
-                  print('====================================');
-                  // print(selected['name']);
-                  // print(partnerController.text);
-                  // print(moneyController.text);
-                  // print(noteController.text);
+                function: () {
+                  create();
                 },
                 child: MyText(
                   CONSTANT.TEXT_CREATE,

@@ -5,6 +5,7 @@ class CONSTANT {
   static const String MAIN_BACKGROUND = "assets/images/Intersection.png";
   static const String TOP_BACKGROUND = "assets/images/top-bg.png";
   static const double FONT_SIZE_DEFAULT = 12;
+  static const String INPUT_HINT_NAME = "Họ tên";
   static const String INPUT_HINT_USERNAME = "Tên đăng nhập";
   static const String INPUT_HINT_PASSWORD = "Mật khẩu";
   static const String INPUT_HINT_CONFIRM_PASSWORD = "Nhập lại mật khẩu";

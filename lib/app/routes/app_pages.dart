@@ -18,12 +18,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.HOME,
       page: () => HomePage(),
-      //binding: LogNotificationBindings(),
     ),
     GetPage(
       name: Routes.REGISTER,
       page: () => RegisterPage(),
-      //binding: LogNotificationBindings(),
     ),
     GetPage(
       name: Routes.CREATE,
