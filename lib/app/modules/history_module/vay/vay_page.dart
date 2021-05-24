@@ -1,6 +1,11 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:monitorflutter/app/routes/app_pages.dart';
 import 'package:monitorflutter/app/theme/my_text.dart';
 import 'package:monitorflutter/app/utils/global_variables.dart';
 import 'package:monitorflutter/app/utils/util.dart';
@@ -30,8 +35,13 @@ class _VayPage extends State<VayPage> {
       setState(() {
         list = response.data;
       });
-    } catch (e) {
-      print(e);
+    } on DioError catch (e) {
+      var parsedJson = json.decode(e.response.toString());
+      if (parsedJson["statusCode"] == 401) {
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        await pref.setString('sid', '');
+        Get.offAndToNamed(Routes.LOGIN);
+      }
     }
   }
 

@@ -23,6 +23,7 @@ class LoginPage extends GetWidget<LoginController> {
     return MyScaffoldLogin(bodyFunction: bodyFunction);
   }
 
+  final arguments = Get.arguments;
   TextEditingController usernameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
@@ -45,8 +46,6 @@ class LoginPage extends GetWidget<LoginController> {
         Get.offAndToNamed(Routes.HOME);
       }
     } catch (e) {
-      // usernameController.text = '';
-      // passwordController.text = '';
       Fluttertoast.showToast(
         msg: "Sai tài khoản hoặc mật khẩu!",
       );
@@ -54,6 +53,9 @@ class LoginPage extends GetWidget<LoginController> {
   }
 
   bodyFunction() {
+    if (arguments != null) {
+      usernameController.text = arguments[0];
+    }
     return Container(
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 40),
@@ -63,6 +65,7 @@ class LoginPage extends GetWidget<LoginController> {
               SizedBox.fromSize(size: Size(0, 80)),
               MyTextFormField(
                 CONSTANT.INPUT_HINT_USERNAME,
+                // initialValue: '',
                 controller: usernameController,
                 radius: 100,
                 icon: iconUsernameBlue,

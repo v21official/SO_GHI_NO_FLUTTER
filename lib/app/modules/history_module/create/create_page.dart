@@ -32,8 +32,7 @@ class _CreatePage extends State<CreatePage> {
     try {
       if (selected == null ||
           partnerController.text == '' ||
-          moneyController.text == '' ||
-          noteController.text == '') {
+          moneyController.text == '') {
         Fluttertoast.showToast(
           msg: "Vui lòng điền đủ thông tin!",
         );

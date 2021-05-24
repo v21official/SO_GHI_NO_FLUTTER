@@ -37,6 +37,15 @@ class RegisterPage extends GetWidget<RegisterController> {
         Fluttertoast.showToast(
           msg: "Vui lòng điền đủ thông tin!",
         );
+      } else if (passwordController.text.length < 6 ||
+          confirmPasswordController.text.length < 6) {
+        Fluttertoast.showToast(
+          msg: "Mật khẩu phải dài từ 6 kí tự!",
+        );
+      } else if (confirmPasswordController.text != passwordController.text) {
+        Fluttertoast.showToast(
+          msg: "Mật khẩu xác nhận chưa chính xác!",
+        );
       } else {
         var url = '${CONSTANT.URL_API}/user/register';
         await Dio().post(url, data: {
@@ -44,13 +53,18 @@ class RegisterPage extends GetWidget<RegisterController> {
           'username': usernameController.text,
           'password': passwordController.text
         });
-        Get.offAndToNamed(Routes.LOGIN);
+        Get.offAndToNamed(Routes.LOGIN, arguments: [usernameController.text]);
       }
-    } catch (e) {
-      Fluttertoast.showToast(
-        msg: "Tài khoản đã tồn tại. Vui lòng thử lại!",
-      );
+    } on DioError catch (e) {
+      var parsedJson = json.decode(e.response.toString());
+      print(parsedJson);
     }
+
+    // catch (e) {
+    //   Fluttertoast.showToast(
+    //     msg: "Tài khoản đã tồn tại. Vui lòng thử lại!",
+    //   );
+    // }
   }
 
   bodyFunction() {

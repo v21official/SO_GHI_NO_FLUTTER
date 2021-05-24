@@ -7,7 +7,6 @@ class MyTextFormField extends StatelessWidget {
   const MyTextFormField(
     this.hintText, {
     Key? key,
-    this.focusNode,
     this.labelText,
     this.labelStyle = labelStyleInputDarkTheme,
     this.helperText,
@@ -27,7 +26,6 @@ class MyTextFormField extends StatelessWidget {
     this.obscureText = false,
   }) : super(key: key);
 
-  final FocusNode? focusNode;
   final String? labelText;
   final TextStyle? labelStyle;
   final String? helperText;
@@ -60,7 +58,6 @@ class MyTextFormField extends StatelessWidget {
             child: TextFormField(
               onTap: () => onTap,
               controller: controller,
-              focusNode: focusNode,
               obscureText: obscureText,
               maxLines: maxLines,
               keyboardType: keyboardType,
@@ -74,7 +71,6 @@ class MyTextFormField extends StatelessWidget {
                 prefixIcon: icon,
                 hintText: hintText,
                 hintStyle: hintStyle,
-                // border: OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(radius),
                   borderSide: BorderSide(color: borderColor),
