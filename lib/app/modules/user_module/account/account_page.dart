@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:monitorflutter/app/theme/my_button.dart';
 import 'package:monitorflutter/app/theme/my_text.dart';
 import 'package:monitorflutter/app/theme/scaffold_user.dart';
@@ -135,7 +136,11 @@ class _AccountPage extends State<AccountPage> {
             height: 30,
             width: 110,
             radius: 50,
-            function: () {},
+            function: () {
+              Fluttertoast.showToast(
+                msg: "Chức năng đang xây dựng!",
+              );
+            },
             child: MyText('Đổi mật khẩu'),
           ),
           SizedBox(height: 10),
