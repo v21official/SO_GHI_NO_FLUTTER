@@ -28,50 +28,53 @@ class RegisterPage extends GetWidget<RegisterController> {
   TextEditingController passwordController = new TextEditingController();
   TextEditingController confirmPasswordController = new TextEditingController();
 
-  void register() async {
+  register() async {
     try {
-      if (usernameController.text == '' ||
-          passwordController.text == '' ||
-          confirmPasswordController.text == '' ||
-          nameController.text == '') {
+      if (usernameController.text.trim() == '' ||
+          passwordController.text.trim() == '' ||
+          confirmPasswordController.text.trim() == '' ||
+          nameController.text.trim() == '') {
         Fluttertoast.showToast(
           msg: "Vui lòng điền đủ thông tin!",
         );
-      } else if (passwordController.text.length < 6 ||
-          confirmPasswordController.text.length < 6) {
+        return;
+      }
+      if (passwordController.text.trim().length < 6 ||
+          confirmPasswordController.text.trim().length < 6) {
         Fluttertoast.showToast(
           msg: "Mật khẩu phải dài từ 6 kí tự!",
         );
-      } else if (confirmPasswordController.text != passwordController.text) {
+        return;
+      }
+      if (confirmPasswordController.text.trim() !=
+          passwordController.text.trim()) {
         Fluttertoast.showToast(
           msg: "Mật khẩu xác nhận chưa chính xác!",
         );
-      } else {
-        var url = '${CONSTANT.URL_API}/user/register';
-        await Dio().post(url, data: {
-          'name': nameController.text,
-          'username': usernameController.text,
-          'password': passwordController.text
-        });
-        Get.offAndToNamed(Routes.LOGIN, arguments: [usernameController.text]);
+        return;
       }
+      var url = '${CONSTANT.URL_API}/user/register';
+      await Dio().post(url, data: {
+        'name': nameController.text.trim(),
+        'username': usernameController.text.trim(),
+        'password': passwordController.text.trim()
+      });
+      Get.offAndToNamed(Routes.LOGIN,
+          arguments: [usernameController.text.trim()]);
     } on DioError catch (e) {
       var parsedJson = json.decode(e.response.toString());
       print(parsedJson);
+      Fluttertoast.showToast(
+        msg: "Tài khoản đã tồn tại. Vui lòng thử lại!",
+      );
     }
-
-    // catch (e) {
-    //   Fluttertoast.showToast(
-    //     msg: "Tài khoản đã tồn tại. Vui lòng thử lại!",
-    //   );
-    // }
   }
 
   bodyFunction() {
     return SingleChildScrollView(
-        child: Container(
-      height: 720,
-      child: Padding(
+      child: Container(
+        height: 720,
+        child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -164,7 +167,9 @@ class RegisterPage extends GetWidget<RegisterController> {
                 ],
               ),
             ],
-          )),
-    ));
+          ),
+        ),
+      ),
+    );
   }
 }

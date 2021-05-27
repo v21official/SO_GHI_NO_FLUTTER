@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,34 +26,34 @@ class _CreatePage extends State<CreatePage> {
   TextEditingController moneyController = new TextEditingController();
   TextEditingController noteController = new TextEditingController();
 
-  void create() async {
+  create() async {
     try {
       if (selected == null ||
-          partnerController.text == '' ||
-          moneyController.text == '') {
+          partnerController.text.trim() == '' ||
+          moneyController.text.trim() == '') {
         Fluttertoast.showToast(
           msg: "Vui lòng điền đủ thông tin!",
         );
-      } else {
-        var url = '${CONSTANT.URL_API}/history';
-        SharedPreferences pref = await SharedPreferences.getInstance();
-        var sid = await pref.getString('sid');
-        Dio dio = new Dio();
-        dio.options.headers['content-Type'] = 'application/json';
-        dio.options.headers["authorization"] = "Bearer $sid";
-        await dio.post(url, data: {
-          'type': selected['name'],
-          'partner': partnerController.text,
-          'money': int.parse(moneyController.text),
-          'note': noteController.text
-        });
-        partnerController.text = '';
-        moneyController.text = '';
-        noteController.text = '';
-        Fluttertoast.showToast(
-          msg: "Thành công!",
-        );
+        return;
       }
+      var url = '${CONSTANT.URL_API}/history';
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      var sid = await pref.getString('sid');
+      Dio dio = new Dio();
+      dio.options.headers['content-Type'] = 'application/json';
+      dio.options.headers["authorization"] = "Bearer $sid";
+      await dio.post(url, data: {
+        'type': selected['name'],
+        'partner': partnerController.text.trim(),
+        'money': int.parse(moneyController.text.trim()),
+        'note': noteController.text.trim()
+      });
+      partnerController.text = '';
+      moneyController.text = '';
+      noteController.text = '';
+      Fluttertoast.showToast(
+        msg: "Thành công!",
+      );
     } catch (e) {
       print(e);
       Fluttertoast.showToast(

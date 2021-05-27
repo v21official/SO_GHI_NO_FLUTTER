@@ -29,15 +29,16 @@ class LoginPage extends GetWidget<LoginController> {
 
   void login() async {
     try {
-      if (usernameController.text == '' || passwordController.text == '') {
+      if (usernameController.text.trim() == '' ||
+          passwordController.text.trim() == '') {
         Fluttertoast.showToast(
           msg: "Vui lòng điền đủ thông tin!",
         );
       } else {
         var url = '${CONSTANT.URL_API}/auth/login';
         var response = await Dio().post(url, data: {
-          'username': usernameController.text,
-          'password': passwordController.text
+          'username': usernameController.text.trim(),
+          'password': passwordController.text.trim()
         });
         var parsedJson = json.decode(response.toString());
         var sid = parsedJson["access_token"];
