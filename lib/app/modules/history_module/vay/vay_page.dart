@@ -107,7 +107,14 @@ class _VayPage extends State<VayPage> {
 
   @override
   Widget build(BuildContext context) {
-    // getListVay();
+    if (list.length == 0) {
+      return Center(
+          child: MyText(
+        'Chưa có giao dịch nào',
+        fontSize: 16,
+        color: Color(0xff658998),
+      ));
+    }
     return Container(
       padding: EdgeInsets.only(top: 1, bottom: 1),
       child: ListView.separated(
@@ -122,33 +129,57 @@ class _VayPage extends State<VayPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4)),
                     elevation: 1,
+                    backgroundColor: Color(0xff25404B),
                     child: Container(
-                      height: 100,
+                      height: 170,
                       width: 300,
                       child: ListView(
                         children: <Widget>[
                           SizedBox(height: 10),
-                          Center(
-                            child: MyText(
-                              "${list[index]['partner']} - ${list[index]['money']}",
-                              fontSize: 16,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              MyText(
+                                "${list[index]['partner']}",
+                                fontSize: 16,
+                                color: Color(0xffa2bac4),
+                                fontWeight: FontWeight.bold,
+                              ),
+                              SizedBox(width: 10),
+                              MyText(
+                                formatMoney
+                                    .format(list[index]['money'])
+                                    .toString(),
+                                fontSize: 16,
+                                color: list[index]['completed'] == false
+                                    ? Color(0xffFF7D7D)
+                                    : Color(0xff1FCCB7),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 40),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
                               Container(
-                                width: 100,
+                                padding: EdgeInsets.only(left: 10, right: 10),
                                 child: MyButton(
-                                  Colors.blue,
-                                  height: 30,
+                                  list[index]['completed'] == false
+                                      ? Color(0xff1FCCB7)
+                                      : Color(0xff25404B),
+                                  borderColor: list[index]['completed'] == false
+                                      ? Color(0xff25404B)
+                                      : Color(0xff1FCCB7),
+                                  height: 40,
+                                  radius: 3,
                                   child: MyText(
                                     list[index]['completed'] == false
                                         ? 'Hoàn thành'
                                         : 'Mở lại',
+                                    color: list[index]['completed'] == false
+                                        ? Colors.white
+                                        : Color(0xff1FCCB7),
                                   ),
                                   function: () {
                                     updateHistory(
@@ -159,12 +190,12 @@ class _VayPage extends State<VayPage> {
                                   },
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(height: 10),
                               Container(
-                                width: 60,
+                                padding: EdgeInsets.only(left: 10, right: 10),
                                 child: MyButton(
-                                  Colors.red,
-                                  height: 30,
+                                  Color(0xffFF7D7D),
+                                  height: 40,
                                   radius: 3,
                                   child: MyText('Xóa'),
                                   function: () {

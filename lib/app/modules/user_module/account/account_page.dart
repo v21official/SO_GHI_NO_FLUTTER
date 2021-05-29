@@ -131,24 +131,24 @@ class _AccountPage extends State<AccountPage> {
             ],
           ),
           SizedBox(height: 10),
-          MyButton(
-            Color(0xff325360),
-            height: 30,
-            width: 110,
-            radius: 50,
-            function: () {
-              Fluttertoast.showToast(
-                msg: "Chức năng đang xây dựng!",
-              );
-            },
-            child: MyText('Đổi mật khẩu'),
-          ),
+          // MyButton(
+          //   Color(0xff325360),
+          //   height: 30,
+          //   width: 110,
+          //   radius: 50,
+          //   function: () {
+          //     Fluttertoast.showToast(
+          //       msg: "Chức năng đang xây dựng!",
+          //     );
+          //   },
+          //   child: MyText('Đổi mật khẩu'),
+          // ),
           SizedBox(height: 10),
           MyButton(
             Color(0xff325360),
-            height: 30,
-            width: 110,
-            radius: 50,
+            height: 40,
+            // width: 110,
+            radius: 4,
             function: () {
               logout();
             },

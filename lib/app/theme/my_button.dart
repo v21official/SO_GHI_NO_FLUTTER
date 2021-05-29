@@ -8,6 +8,7 @@ class MyButton extends StatelessWidget {
   final double? radius;
   final Widget? child;
   final Color color;
+  final Color? borderColor;
 
   const MyButton(
     this.color, {
@@ -17,6 +18,7 @@ class MyButton extends StatelessWidget {
     this.height = 48,
     this.radius = 6,
     this.child,
+    this.borderColor,
   }) : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class MyButton extends StatelessWidget {
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius!),
+              side: BorderSide(color: borderColor ?? color),
             ),
           ),
         ),

@@ -53,7 +53,14 @@ class _ChoVayPage extends State<ChoVayPage> {
 
   @override
   Widget build(BuildContext context) {
-    // getListChoVay();
+    if (list.length == 0) {
+      return Center(
+          child: MyText(
+        'Chưa có giao dịch nào',
+        fontSize: 16,
+        color: Color(0xff658998),
+      ));
+    }
     return Container(
       padding: EdgeInsets.only(top: 1, bottom: 1),
       child: ListView.separated(
